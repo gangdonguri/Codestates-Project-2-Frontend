@@ -36,8 +36,8 @@ function App() {
   }
 
   const handleOrder = (callback) => {
-    mutate('get/orders', async (orders) => {
-      const newOrder = await fetch(`${process.env.REACT_APP_ENDPOINT}/api/order`, {
+    mutate('get/orders', async (o) => {
+      const newOrder = await fetch(`${process.env.REACT_APP_ENDPOINT}/api/orders`, {
         method: 'POST',
         body: JSON.stringify({
           restaurantId: currentRestaurant._id,
@@ -55,7 +55,7 @@ function App() {
       setCurrentTab('배달 현황')
       callback()
 
-      return [...orders, newOrder]
+      return [...o, newOrder]
     })
   }
 
