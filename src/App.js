@@ -37,7 +37,7 @@ function App() {
 
   const handleOrder = (callback) => {
     mutate('get/orders', async (orders) => {
-      const newOrder = await fetch(`${process.env.REACT_APP_ENDPOINT}/api/order`, {
+      const newOrder = await fetch(`${process.env.REACT_APP_ENDPOINT}/api/orders`, {
         method: 'POST',
         body: JSON.stringify({
           restaurantId: currentRestaurant._id,
