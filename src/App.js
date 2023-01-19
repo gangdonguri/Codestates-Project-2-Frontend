@@ -72,7 +72,6 @@ function App() {
       </TabItem>
       <TabBar onChange={setCurrentTab} currentTab={currentTab}>
         <TabBar.Item label="주문" icon="shop"></TabBar.Item>
-        <TabBar.Item label="배달 현황" icon="target"></TabBar.Item>
         <TabBar.Item label="주문 내역" icon="file-list-tick"></TabBar.Item>
       </TabBar>
     </div>

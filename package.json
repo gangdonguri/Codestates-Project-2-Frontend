@@ -14,7 +14,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "REACT_APP_ENDPOINT=https://3e9904cf-f133-4e24-82bb-9e963f4e500d.mock.pstmn.io react-scripts start",
+    "start": "PORT=4000 REACT_APP_ENDPOINT=http://localhost:3000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

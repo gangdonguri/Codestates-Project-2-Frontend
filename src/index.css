@@ -219,3 +219,23 @@ input[type=text], input[type=number] {
   padding: 0.5rem;
   font-size: 1.2rem;
 }
+
+
+/* filled message */
+
+.filled-wrapper {
+  width: 100vw;
+  top: calc(50% - 3rem);
+  position: absolute;
+  display: flex;
+}
+.filled {
+  padding: 2rem 2rem;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 1.2rem;
+  background-color: #eee;
+  border: 2px dotted gray;
+  border-radius: 1rem;
+}

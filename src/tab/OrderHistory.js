@@ -1,11 +1,12 @@
 import useSWR from "swr"
+import FilledMessage from '../FilledMessage'
 const fetcher = () => fetch(`${process.env.REACT_APP_ENDPOINT}/api/orders`).then(res => res.json())
 
 function OrderHistory() {
   const { data: orders, error } = useSWR('get/orders', fetcher)
 
-  if (!orders) return <div>로딩 중</div>
-  if (error || orders.error) return <div>요청을 받아올 수 없습니다. 서버 문제같은데요?</div>
+  if (error) return <FilledMessage>요청을 받아올 수 없습니다. 서버 문제같은데요?</FilledMessage>
+  if (!orders) return <FilledMessage>로딩 중</FilledMessage>
 
   console.log(orders)
   return <>
@@ -26,6 +27,8 @@ function OrderHistory() {
 
           </div>
         </li>)}
+
+        {orders.length === 0 ? <FilledMessage>아무것도 주문하지 않으셨어요. 주문하러 가볼까요?</FilledMessage> : ''}
       </ul>
     </div>
   </>

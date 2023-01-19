@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useSWR from "swr"
+import FilledMessage from '../FilledMessage'
 const fetcher = () => fetch(`${process.env.REACT_APP_ENDPOINT}/api/restaurants`).then(res => res.json())
 
 function OrderHere({ orders, onSelectMenu, currentRestaurant, onSelectRestaurant, onClickOrder }) {
@@ -7,8 +8,9 @@ function OrderHere({ orders, onSelectMenu, currentRestaurant, onSelectRestaurant
 
   const [menuPageIdx, setMenuPageIdx] = useState(0)
 
-  if (!restaurants) return <div>로딩 중</div>
-  if (error || restaurants.error) return <div>요청을 받아올 수 없습니다. 서버 문제같은데요?</div>
+  if (error) return <FilledMessage>요청을 받아올 수 없습니다. 서버 문제같은데요?</FilledMessage>
+  if (!restaurants) return <FilledMessage>로딩 중</FilledMessage>
+
 
   const handleSelectRestaurant = (r) => {
     if(r === null) {
@@ -40,6 +42,7 @@ function OrderHere({ orders, onSelectMenu, currentRestaurant, onSelectRestaurant
               <div>{r.address}</div>
               <div>{r.rating}</div>
             </li>)}
+            {restaurants.length === 0 ? <FilledMessage>지금은 이용할 수 있는 식당이 없네요 🥲</FilledMessage> : ''}
           </ul>
         </div>
       </div>
